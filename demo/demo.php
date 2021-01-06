@@ -6,7 +6,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 // enable Tracy
 // see https://doc.nette.org/en/bootstrap
-$configurator = new Nette\Configurator;
+$configurator = new Nette\Bootstrap\Configurator;
 $configurator->enableTracy(__DIR__ . '/log');
 
 // create DI container
@@ -19,8 +19,8 @@ $container = $configurator->createContainer();
 
 // get database from DI container
 // see https://doc.nette.org/en/di-configuration
-/** @var Nette\Database\Context $database */
-$database = $container->getByType(Nette\Database\Context::class);
+/** @var Nette\Database\Explorer $database */
+$database = $container->getByType(Nette\Database\Explorer::class);
 
 // load database dump
 Nette\Database\Helpers::loadFromFile(
